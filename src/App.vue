@@ -1,10 +1,10 @@
 <template>
-  <div class="bg-dun h-screen">
+  <div class="bg-dun h-screen sm:px-5 md:px-8 lg:px-24 py-10 overflow-auto text-">
     <header class="flex justify-between">
       <NavBar/>
       <div class="flex w-1/4 gap-3">
         <SearchBar/>
-        <CartButton/>
+        <CartButton background="bg-khaki" color="text-black"/>
       </div>
     </header>
     <RouterView />
