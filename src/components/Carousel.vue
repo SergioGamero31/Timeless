@@ -1,44 +1,34 @@
 <template>
-    <swiper-container 
-    :slides-per-view="1" :pagination="{ hideOnClick: false }" loop="true"
-    autoplay-delay="3000" autoplay-disable-on-interaction="false"
-    class="h-[40vh] rounded-3xl overflow-hidden hover:cursor-grab active:cursor-grabbing">
-        <swiper-slide v-for="slide in slides" :key="slide.quote"
-        class="flex items-center p-10 bg-cover" :style="carouselBackground(slide)">
-            <h1 class="text-4xl leading-tight text-slate-100 font-semibold uppercase lg:w-[22%] select-none drop-shadow-[0_5px_5px_rgba(0,0,0,0.7)]">
+    <Splide :options="{ rewind: true, arrows: false }" tag="section"
+    class="rounded-3xl overflow-hidden">
+        <SplideSlide v-for="slide in slides" class="flex items-center hover:cursor-grab sm:h-[40%] lg:h-[40vh] active:cursor-grabbing">
+            <img class="w-full object-cover" :src="slide.img">
+            <h1 class="absolute sm:text-2xl lg:text-4xl lg:w-[22%] sm:mx-5 md:mx-10 text-slate-100 font-semibold uppercase drop-shadow-[0_5px_5px_rgba(0,0,0,0.7)]">
                 {{ slide.quote }}
             </h1>
-        </swiper-slide>
-    </swiper-container>
+        </SplideSlide>
+    </Splide>
 </template>
 
 <script setup>
-import { register } from 'swiper/element/bundle'
-
-register()
+import { Splide, SplideSlide } from '@splidejs/vue-splide'
+import '@splidejs/vue-splide/css'
 
 const slides = [
     {
         quote: 'Moda atemporal para expresar tu esencia',
-        imgUrl: 'src/assets/img/slide1.webp',
-        position: '20%'
+        component: 'h1',
+        img: 'src/assets/img/slide1.webp',
     },
     {
         quote: 'Gooood',
-        imgUrl: 'src/assets/img/slide2.webp',
-        position: '65%'
+        component: 'span',
+        img: 'src/assets/img/slide2.webp',
     },
     {
         quote: 'Gooood2',
-        imgUrl: 'src/assets/img/slide3.webp',
-        position: '40%'
+        component: 'span',
+        img: 'src/assets/img/slide3.webp',
     }
 ]
-
-const carouselBackground = (slide)=>{
-    return {
-        backgroundImage: `url(${slide.imgUrl})`,
-        backgroundPositionY: slide.position
-    }
-}
 </script>

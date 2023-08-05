@@ -1,8 +1,6 @@
 <template>
   <main class="mt-7">
-    <section>
-      <Carousel/>
-    </section>
+    <Carousel/>
     <section>
       <h2 class="font-semibold uppercase my-7">Mas comprados</h2>
       <ul class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 sm:gap-3 md:gap-5">
