@@ -1,6 +1,6 @@
 <template>
     <button class="sm:flex lg:block sm:items-center sm:justify-center sm:gap-2 lg:gap-0 sm:self-stretch
-        lg:self-end rounded-xl p-2" :class="background, color">
+        lg:self-end rounded-xl p-2">
         <span v-if="responsive" class="lg:hidden">Agregar</span>
         <CartIcon/>
     </button>   
@@ -10,8 +10,6 @@
 import CartIcon from '~icons/mingcute/shopping-cart-2-line'
 
 const props = defineProps({
-    background: String,
-    color: String,
     responsive: String
 })
 </script>

@@ -4,7 +4,7 @@
       <NavBar/>
       <div class="flex w-1/4 gap-3">
         <SearchBar/>
-        <CartButton background="bg-khaki" color="text-black"/>
+        <CartButton class="bg-khaki-400 hover:bg-khaki-500 transition-colors text-eerie-black" aria-label="Ver carrito"/>
       </div>
     </header>
     <RouterView />

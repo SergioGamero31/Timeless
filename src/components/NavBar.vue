@@ -1,5 +1,5 @@
 <template>
-    <nav class="flex gap-8">
+    <nav class="flex gap-8 text-eerie-black">
         <p class="font-bold uppercase">Timeless</p>
         <ul class="flex font-medium gap-8">
             <li>Hombre</li>
