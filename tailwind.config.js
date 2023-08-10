@@ -7,12 +7,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        'eerie-black': '#252525',
         'linen': '#F5EFE7',
         'dun': '#D8C4B6',
-        'khaki': '#C0A48F',
-        'tiffany-blue': '#A3D2CA',
-        'verdigris': '#5EAAA8',
-        'caribbean': '#056676'
+        'khaki': {
+          400: '#c0a48f',
+          500: '#a98166',
+          600: '#9b705b'
+        },
+        'verdigris': {
+          400: '#5aa7a5',
+          500: '#408c8c',
+          600: '#316f70'
+        }
       }
     },
     screens :{
