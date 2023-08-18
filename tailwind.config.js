@@ -15,10 +15,10 @@ module.exports = {
           500: '#a98166',
           600: '#9b705b'
         },
-        'verdigris': {
-          400: '#5aa7a5',
-          500: '#408c8c',
-          600: '#316f70'
+        'payne-gray': {
+          400: '#788e98',
+          500: '#596E79',
+          600: '#4f5f6b'
         }
       }
     },
@@ -30,6 +30,8 @@ module.exports = {
       '2xl': '1536px',
     }
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animated')
+  ],
 }
 
