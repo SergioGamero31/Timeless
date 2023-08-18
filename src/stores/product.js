@@ -7,10 +7,13 @@ const { fetchData, results, error } = useFetch()
 export const useProductStore = defineStore('product', {
     state: ()=>{
         return {
-            product: {},
             products: [],
-            topProducts: []
+            topProducts: [],
+            menProducts: []
         }
+    },
+    persist: {
+        key: 'product-list'
     },
     actions: {
         async fetchProducts(){
@@ -25,6 +28,10 @@ export const useProductStore = defineStore('product', {
         getTopProducts(){
             const topProducts = this.products.filter(product => product.category !== CATEGORIES.ELECTRONICS_CATEGORY)
             this.topProducts = topProducts
+        },
+        getMenProducts(){
+            const menProducts = this.products.filter(product => product.category === CATEGORIES.MEN_CATEGORY)
+            this.menProducts = menProducts
         }
     }
 })
