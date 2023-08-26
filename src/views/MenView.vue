@@ -1,6 +1,6 @@
 <template>
-  <main>
-    <section class="flex sm:h-full lg:h-[80vh]">
+  <main class="sm:h-full lg:h-[85vh]">
+    <section class="flex h-full">
       <ul class="grid sm:grid-cols-2 lg:grid-cols-6 auto-rows-fr gap-5">
         <li @mouseover="showImage=true" @mouseout="showImage=false" 
         class="relative sm:col-span-2 lg:col-span-4 row-span-2 rounded-3xl overflow-hidden animate-fade">
@@ -8,7 +8,7 @@
           <div class="absolute flex justify-between w-full bottom-0 p-5 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)]">
             <div class="flex flex-col text-white uppercase">
               <span class="text-3xl animate-fade-right animate-delay-700">{{ mainProduct.name }}</span>
-              <span class="text-xl animate-fade-up animate-delay-700">{{ mainProduct.price }}</span>
+              <span class="text-xl animate-fade-up animate-delay-700">${{ mainProduct.price }}</span>
             </div>
             <CartButtonProminent class="self-end animate-fade-left animate-delay-700"/>
           </div>
@@ -35,7 +35,7 @@ let showImage = ref(false)
 
 const mainProduct = {
   name: 'oversized bomber jacket',
-  price: '150.00',
+  price: '149.99',
   img: ['src/assets/img/bomber-jacket.webp', 'src/assets/img/bomber-jacket2.webp']
 }
 </script>
