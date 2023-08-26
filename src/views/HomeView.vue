@@ -1,5 +1,5 @@
 <template>
-  <main class="mt-7">
+  <main>
     <Carousel/>
     <section>
       <h2 class="font-bold uppercase my-7 text-eerie-black">Mas comprados</h2>
@@ -12,14 +12,15 @@
 
 <script setup>
 import { onMounted } from 'vue';
-import Carousel from '../components/Carousel.vue';
-import ProductCard from '../components/ProductCard.vue';
-import { useProductStore } from '../stores/product';
+import Carousel from '../components/Carousel.vue'
+import ProductCard from '../components/ProductCard.vue'
+import { useProductStore } from '../stores/product'
 
 const store = useProductStore()
 
 onMounted(()=>{
-  store.fetchProducts()
+  const storedProducts = JSON.parse(localStorage.getItem("product-list"))?.products
+  if(storedProducts) store.products = storedProducts
+  else store.fetchProducts()
 })
-
 </script>
