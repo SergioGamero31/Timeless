@@ -9,7 +9,8 @@ export const useProductStore = defineStore('product', {
         return {
             products: [],
             topProducts: [],
-            menProducts: []
+            menProducts: [],
+            womenProducts: []
         }
     },
     persist: {
@@ -32,6 +33,10 @@ export const useProductStore = defineStore('product', {
         getMenProducts(){
             const menProducts = this.products.filter(product => product.category === CATEGORIES.MEN_CATEGORY)
             this.menProducts = menProducts
+        },
+        getWomenProducts(){
+            const womenProducts = this.products.filter(product => product.category === CATEGORIES.WOMEN_CATEGORY)
+            this.womenProducts = womenProducts
         }
     }
 })
