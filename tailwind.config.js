@@ -8,17 +8,24 @@ module.exports = {
     extend: {
       colors: {
         'eerie-black': '#252525',
+        'onyx': '#454545',
         'linen': '#F5EFE7',
         'dun': '#D8C4B6',
+        'tan': '#E5C18C',
+        'coyote': '#7F5529',
         'khaki': {
-          400: '#c0a48f',
-          500: '#a98166',
-          600: '#9b705b'
+          400: '#C0A48F',
+          500: '#A98166',
+          600: '#9B705B'
         },
         'payne-gray': {
-          400: '#788e98',
+          400: '#788E98',
           500: '#596E79',
-          600: '#4f5f6b'
+          600: '#4F5F6B'
+        },
+        'brick-red': {
+          300: '#F4ADB1',
+          700: '#AD233B'
         }
       }
     },
@@ -32,6 +39,6 @@ module.exports = {
   },
   plugins: [
     require('tailwindcss-animated')
-  ],
+  ]
 }
 

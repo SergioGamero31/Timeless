@@ -18,8 +18,16 @@ const router = createRouter({
       path: '/women',
       name: 'women',
       component: () => import('../views/WomenView.vue')
+    },
+    {
+      path: '/product/:id',
+      name: 'product',
+      component: () => import('../views/ProductView.vue')
     }
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition){
+    return { left: 0, top: 0 }
+  }
 })
 
 export default router
