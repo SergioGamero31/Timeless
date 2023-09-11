@@ -11,7 +11,8 @@ export const useProductStore = defineStore('product', {
             products: [],
             topProducts: [],
             menProducts: [],
-            womenProducts: []
+            womenProducts: [],
+            jewelery: []
         }
     },
     persist: {
@@ -34,17 +35,21 @@ export const useProductStore = defineStore('product', {
             if(error.value) console.log(error.value)
             else this.product = results.value            
         },
+        filterByCategory(category){
+            return this.products.filter(product => product.category === category)
+        },
         getTopProducts(){
             const topProducts = this.products.filter(product => product.category !== CATEGORIES.ELECTRONICS_CATEGORY)
             this.topProducts = topProducts
         },
         getMenProducts(){
-            const menProducts = this.products.filter(product => product.category === CATEGORIES.MEN_CATEGORY)
-            this.menProducts = menProducts
+            this.menProducts = this.filterByCategory(CATEGORIES.MEN_CATEGORY)
         },
         getWomenProducts(){
-            const womenProducts = this.products.filter(product => product.category === CATEGORIES.WOMEN_CATEGORY)
-            this.womenProducts = womenProducts
+            this.womenProducts = this.filterByCategory(CATEGORIES.WOMEN_CATEGORY)
+        },
+        getAccessories(){
+            this.jewelery = this.filterByCategory(CATEGORIES.JEWELERY_CATEGORY)
         },
         restoreProduct(){
             this.product = {}
