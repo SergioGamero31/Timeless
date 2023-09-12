@@ -7,6 +7,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        'alto': '#DBDBDB',
+        'platinum': '#E0E0E0',
         'eerie-black': '#252525',
         'onyx': '#454545',
         'linen': '#F5EFE7',

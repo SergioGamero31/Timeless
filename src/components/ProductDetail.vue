@@ -7,9 +7,9 @@
         </ul>
         <div class="flex sm:flex-col md:flex-row rounded-3xl overflow-hidden">
             <div class="flex md:w-[50%] sm:h-80 md:h-full items-center justify-center bg-white p-8">
-                <img class="w-[70%] h-full object-contain" :src="store.product.image" :alt="store.product.title">
+                <img class="w-[60%] h-full object-contain" :src="store.product.image" :alt="store.product.title">
             </div>
-            <div class="flex flex-col md:w-[50%] justify-between bg-linen sm:p-5 md:p-8 sm:gap-5 md:gap-7"> 
+            <div class="flex flex-col md:w-[50%] justify-between bg-linen sm:p-5 md:p-10 sm:gap-5 md:gap-7"> 
                 <div class="flex flex-col gap-6">
                     <h1 class="sm:text-lg md:text-xl font-bold text-eerie-black">{{store.product.title}}</h1>
                     <div class="flex gap-3">
@@ -21,7 +21,7 @@
                         <button @click="toggleReadMore" class="text-cyan-700 font-medium hover:underline">{{ readMoreButton }}</button>
                     </p>
                 </div>
-                <button class="flex items-center justify-center gap-2 rounded-3xl px-4 py-3 text-white bg-payne-gray-500 hover:bg-payne-gray-400 transition-colors">Añadir al carrito<CartIcon/></button>
+                <button class="flex items-center justify-center gap-2 rounded-2xl px-4 py-3 text-white bg-payne-gray-500 hover:bg-payne-gray-400 transition-colors">Añadir al carrito<CartIcon/></button>
             </div>
         </div>
     </section>    
