@@ -6,10 +6,11 @@
   <div class="flex flex-col gap-7 sm:px-5 md:px-8 lg:px-24 pt-10 pb-5">
     <header class="flex justify-between">
       <NavBar @sideBar="toogleSideBar"/>
-      <CartButton class="bg-khaki-400 hover:bg-khaki-500 transition-colors text-eerie-black" aria-label="Ver carrito"/>
+      <CartButton @click="toogleCart"/>
     </header>
     <RouterView/>
   </div>
+  <ShoppingCart @showCart="toogleCart" v-if="showCart"/>
 </template>
 
 <script setup>
@@ -17,12 +18,17 @@ import { ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import NavBar from './components/NavBar.vue'
 import CartButton from './components/CartButton.vue'
-import SideBar from './components/SideBar.vue';
+import SideBar from './components/SideBar.vue'
+import ShoppingCart from './components/ShoppingCart.vue'
 
 const sideBar = ref(false)
+const showCart = ref(false)
 
 const toogleSideBar = () => {
   sideBar.value = !sideBar.value
+}
+const toogleCart = () => {
+  showCart.value = !showCart.value
 }
 </script>
 

@@ -13,7 +13,12 @@
                 </div>
                 <div class="flex sm:flex-col lg:flex-row items-end justify-between sm:gap-3 lg:gap-0">
                     <span class="text-base font-semibold sm:self-start lg:self-end text-eerie-black">${{ product.price }}</span>   
-                    <CartButton class="bg-payne-gray-500 hover:bg-payne-gray-400 text-white transition-colors" aria-label="Agregar al carrito" responsive="true"/>
+                    <button @click.stop.prevent="addToCart(product)"
+                    class="sm:flex lg:block sm:items-center sm:justify-center sm:gap-2 lg:gap-0 sm:self-stretch lg:self-end p-2 rounded-xl text-white bg-payne-gray-500 hover:bg-payne-gray-400 transition-colors" 
+                    aria-label="Agregar al carrito">
+                        <span class="lg:hidden">Agregar</span>
+                        <CartIcon/>
+                    </button>
                 </div>
             </div>
         </RouterLink>
@@ -23,7 +28,12 @@
 <script setup>
 import HeartIcon from '~icons/mingcute/heart-line'
 import StarIcon from '~icons/mingcute/star-fill'
-import CartButton from './CartButton.vue'
+import CartIcon from '~icons/mingcute/shopping-cart-2-line'
+import { useCartStore } from '../stores/cart'
+
+const store = useCartStore()
+
+const addToCart = (product) => store.addToCart(product)
 
 const props = defineProps({
     product: {}

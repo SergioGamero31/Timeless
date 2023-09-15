@@ -27,6 +27,7 @@ module.exports = {
         },
         'brick-red': {
           300: '#F4ADB1',
+          600: '#CE3048',
           700: '#AD233B'
         }
       }

@@ -21,7 +21,7 @@
                         <button @click="toggleReadMore" class="text-cyan-700 font-medium hover:underline">{{ readMoreButton }}</button>
                     </p>
                 </div>
-                <button class="flex items-center justify-center gap-2 rounded-2xl px-4 py-3 text-white bg-payne-gray-500 hover:bg-payne-gray-400 transition-colors">Añadir al carrito<CartIcon/></button>
+                <button @click="addToCart(store.product)" class="flex items-center justify-center gap-2 rounded-2xl px-4 py-3 text-white bg-payne-gray-500 hover:bg-payne-gray-400 transition-colors">Añadir al carrito<CartIcon/></button>
             </div>
         </div>
     </section>    
@@ -31,11 +31,14 @@
 import { ref, computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useProductStore } from '../stores/product'
+import { useCartStore } from '../stores/cart'
 import StarIcon from '~icons/mingcute/star-fill'
 import HeartIcon from '~icons/mingcute/heart-fill'
 import CartIcon from '~icons/mingcute/shopping-cart-2-line'
 
 const store = useProductStore()
+const cartStore = useCartStore()
+
 const router = useRouter()
 const props = defineProps({ productId: String })
 
@@ -58,4 +61,6 @@ const readMoreButton = computed(()=> isExpanded.value ? "Mostrar menos" : "Mostr
 const toggleReadMore = () => {
     isExpanded.value = !isExpanded.value
 }
+
+const addToCart = (product) => cartStore.addToCart(product)
 </script>

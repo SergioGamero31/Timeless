@@ -1,15 +1,11 @@
 <template>
-    <button class="sm:flex lg:block sm:items-center sm:justify-center sm:gap-2 lg:gap-0 sm:self-stretch
-        lg:self-end rounded-xl p-2">
-        <span v-if="responsive" class="lg:hidden">Agregar</span>
+    <button class="relative bg-khaki-400 hover:bg-khaki-500 transition-colors text-eerie-black rounded-xl p-2" aria-label="Ver carrito">
+        <span class="absolute bottom-7 right-0 bg-brick-red-600 rounded-full h-2.5 w-2.5 animate-ping"></span>
+        <span class="absolute bottom-7 right-0 bg-brick-red-600 rounded-full h-2.5 w-2.5"></span>
         <CartIcon/>
     </button>   
 </template>
 
 <script setup>
 import CartIcon from '~icons/mingcute/shopping-cart-2-line'
-
-const props = defineProps({
-    responsive: String
-})
 </script>
