@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch} from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import NavBar from './components/NavBar.vue'
 import CartButton from './components/CartButton.vue'
@@ -24,17 +24,19 @@ import ShoppingCart from './components/ShoppingCart.vue'
 const sideBar = ref(false)
 const showCart = ref(false)
 
-const toogleSideBar = () => {
-  sideBar.value = !sideBar.value
-}
-const toogleCart = () => {
-  showCart.value = !showCart.value
-}
+const toogleSideBar = () => sideBar.value = !sideBar.value
+const toogleCart = () => showCart.value = !showCart.value
+
+watch(showCart, (newCart, oldCart)=>{
+  if(newCart) document.body.style.overflow = 'hidden'
+  else document.body.style.overflow = 'auto'
+})
 </script>
 
 <style>
 html{
   background-color: #D8C4B6;
+  scrollbar-gutter: stable;
 }
 .fade-enter-active {
   animation: fadeInRight 0.2s ease-in;
