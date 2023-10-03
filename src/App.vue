@@ -3,7 +3,7 @@
     <SideBar @sideBar="toogleSideBar" v-if="sideBar" 
     class="fixed h-screen w-2/5 z-10 bg-linen"/>
   </Transition>
-  <div class="flex flex-col gap-7 sm:px-5 md:px-8 lg:px-24 pt-10 pb-5">
+  <div class="flex flex-col gap-7 sm:px-5 md:px-8 lg:px-24 pt-10 pb-5 w-full">
     <header class="flex justify-between">
       <NavBar @sideBar="toogleSideBar"/>
       <CartButton @click="toogleCart"/>

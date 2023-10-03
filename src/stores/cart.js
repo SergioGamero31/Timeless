@@ -25,6 +25,9 @@ export const useCartStore = defineStore('cart', {
         },
         checkCartStatus(){
             this.isCartEmpty = this.cart.length === 0
+        },
+        sendOrder(){
+            this.cart = []
         }
     }
 })

@@ -1,6 +1,7 @@
 <template>
     <li class="flex gap-4 items-center sm:p-3 lg:p-4 bg-dun rounded-3xl">
-        <img class="w-1/5 rounded-lg" :src="mainProduct ? item.product.img[0] : item.product.image" :alt="item.product.title">
+        <img class="w-1/5 lg:h-32 object-contain rounded-lg bg-white" :class="{'object-cover' : mainProduct}"
+        :src="mainProduct ? item.product.img[0] : item.product.image" :alt="item.product.title">
         <div class="flex flex-col flex-grow gap-1" :class="{'sm:truncate' : item.product.title.length > 50}">
             <span class="font-medium lg:whitespace-normal" :class="{'sm:truncate' : item.product.title.length > 50}">{{ item.product.title }}</span>
             <span>$ {{ subtotal }}</span>
@@ -18,7 +19,6 @@ import { computed } from 'vue'
 import { useCartStore } from '../stores/cart'
 
 const store = useCartStore()
-
 const props = defineProps({
     item: {}
 })

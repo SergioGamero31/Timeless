@@ -16,23 +16,32 @@
                     <span>Total</span>
                     <span>$ {{ total }}</span>
                 </div>
-                <button class="w-full bg-payne-gray-500 hover:bg-payne-gray-400 text-white rounded-2xl p-3 transition-colors">Ir a pagar</button>
+                <button @click="goToPayment" :disabled="store.cart.length === 0" 
+                class="w-full bg-payne-gray-500 enabled:hover:bg-payne-gray-400 text-white rounded-2xl p-3 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">Ir a pagar</button>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
+import { useRouter } from 'vue-router'
 import CartItem from './CartItem.vue'
 import CloseIcon from '~icons/mingcute/close-line'
 import { useCartStore } from '../stores/cart'
 
 const store = useCartStore()
+const router = useRouter()
+const emit = defineEmits(['showCart'])
 
 const total = computed(()=>{
     return store.cart.reduce((acc, item) =>{
         return acc + (item.product.price * item.quantity)
     },0).toFixed(2)
 })
+
+const goToPayment = () => {
+    router.push({ name: 'payment'})
+    emit('showCart')
+}
 </script>

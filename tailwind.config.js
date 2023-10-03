@@ -15,6 +15,7 @@ module.exports = {
         'dun': '#D8C4B6',
         'tan': '#E5C18C',
         'coyote': '#7F5529',
+        'verdigris': '#5AA7A5',
         'khaki': {
           400: '#C0A48F',
           500: '#A98166',
@@ -41,7 +42,8 @@ module.exports = {
     }
   },
   plugins: [
-    require('tailwindcss-animated')
+    require('tailwindcss-animated'),
+    require('@tailwindcss/forms'),
   ]
 }
 
