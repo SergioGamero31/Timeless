@@ -7,6 +7,9 @@ export const useCartStore = defineStore('cart', {
             isCartEmpty: true
         }
     },
+    persist: {
+        key: 'shopping-cart'
+    },
     actions: {
         addToCart(product){
             const existingCartItem = this.cart.find(item => item.product.id === product.id)
@@ -28,6 +31,7 @@ export const useCartStore = defineStore('cart', {
         },
         sendOrder(){
             this.cart = []
+            this.checkCartStatus()
         }
     }
 })
