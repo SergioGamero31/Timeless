@@ -33,6 +33,11 @@ const router = createRouter({
       path: '/payment',
       name: 'payment',
       component: () => import('../views/PaymentView.vue')
+    },
+    {
+      path: '/:catchAll(.*)',
+      name: 'Error',
+      component: () => import('../views/ErrorView.vue')
     }
   ],
   scrollBehavior(to, from, savedPosition){
