@@ -214,8 +214,10 @@ import MasterIcon from '../components/icons/IconMastercard.vue'
 import PaypalIcon from '../components/icons/IconPaypal.vue'
 import ArrowLeft from '~icons/mingcute/left-line'
 import { useCartStore } from '../stores/cart'
+import { useOrderStore } from '../stores/order'
 
 const store = useCartStore()
+const orderStore = useOrderStore()
 const emit = defineEmits(['showReceipt'])
 
 let paymentMethod = ref(null)
@@ -242,8 +244,9 @@ let paymentMessage = ref('')
 let shippingMessage = ref('')
 
 const sendOrder = () => {
-    store.sendOrder()
+    orderStore.setPaymentMethod(paymentMethod.value)
     emit('showReceipt')
+    setTimeout(()=> store.sendOrder(), 2000)
 }
 
 const validateForm = () => {

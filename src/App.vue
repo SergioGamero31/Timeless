@@ -8,9 +8,10 @@
       <NavBar @sideBar="toogleSideBar"/>
       <CartButton @click="toogleCart"/>
     </header>
-    <RouterView/>
+    <RouterView @showReceipt="toogleReceipt"/>
   </div>
   <ShoppingCart @showCart="toogleCart" v-if="showCart"/>
+  <PaymentReceipt @showReceipt="toogleReceipt" v-if="showReceipt"/>
 </template>
 
 <script setup>
@@ -20,12 +21,15 @@ import NavBar from './components/NavBar.vue'
 import CartButton from './components/CartButton.vue'
 import SideBar from './components/SideBar.vue'
 import ShoppingCart from './components/ShoppingCart.vue'
+import PaymentReceipt from './components/PaymentReceipt.vue'
 
 const sideBar = ref(false)
 const showCart = ref(false)
+const showReceipt = ref(false)
 
 const toogleSideBar = () => sideBar.value = !sideBar.value
 const toogleCart = () => showCart.value = !showCart.value
+const toogleReceipt = () => showReceipt.value = !showReceipt.value
 
 watch(showCart, (newCart, oldCart)=>{
   if(newCart) document.body.style.overflow = 'hidden'
