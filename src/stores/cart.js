@@ -10,6 +10,13 @@ export const useCartStore = defineStore('cart', {
     persist: {
         key: 'shopping-cart'
     },
+    getters:{
+        cartTotal: (state)=> {
+            return state.cart.reduce((acc, item)=>{
+                return acc + item.product.price * item.quantity
+            },0).toFixed(2)
+        }
+    },
     actions: {
         addToCart(product){
             const existingCartItem = this.cart.find(item => item.product.id === product.id)
@@ -25,6 +32,9 @@ export const useCartStore = defineStore('cart', {
                 this.cart.splice(productIndex, 1)
             }
             this.checkCartStatus()
+        },
+        calculateSubtotal(item){
+            return (item.quantity * item.product.price).toFixed(2)
         },
         checkCartStatus(){
             this.isCartEmpty = this.cart.length === 0

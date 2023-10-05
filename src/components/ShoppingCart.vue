@@ -14,7 +14,7 @@
             <div class="flex flex-col gap-5">
                 <div class="flex justify-between font-semibold text-lg">
                     <span>Total</span>
-                    <span>$ {{ total }}</span>
+                    <span>$ {{ store.cartTotal }}</span>
                 </div>
                 <button @click="goToPayment" :disabled="store.cart.length === 0" 
                 class="w-full bg-payne-gray-500 enabled:hover:bg-payne-gray-400 text-white rounded-2xl p-3 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">Ir a pagar</button>
@@ -24,7 +24,6 @@
 </template>
 
 <script setup>
-import { computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import CartItem from './CartItem.vue'
 import CloseIcon from '~icons/mingcute/close-line'
@@ -33,12 +32,6 @@ import { useCartStore } from '../stores/cart'
 const store = useCartStore()
 const router = useRouter()
 const emit = defineEmits(['showCart'])
-
-const total = computed(()=>{
-    return store.cart.reduce((acc, item) =>{
-        return acc + (item.product.price * item.quantity)
-    },0).toFixed(2)
-})
 
 const goToPayment = () => {
     router.push({ name: 'payment'})

@@ -187,17 +187,18 @@
                 <ul v-if="store.cart.length > 0" class="flex flex-col gap-3">
                     <li v-for="item in store.cart" class="flex relative items-center gap-3 p-2 rounded-xl bg-dun">
                         <img :src="item.product.type ? item.product.img[0] : item.product.image" 
-                        class="w-12 h-12 object-contain bg-white" :class="{'object-cover': item.product.type }">
+                        class="w-12 h-12 object-contain bg-white" :class="{'object-cover': item.product.type }"
+                        :alt="item.product.title">
                         <div class="flex w-full justify-between truncate">
                             <span class="font-medium truncate"> {{ item.product.title }}</span>
-                            <span>${{ item.product.price }}</span>
+                            <span>${{ store.calculateSubtotal(item) }}</span>
                         </div>
                         <span class="absolute w-4 h-4 right-0 top-0 -mr-1 -mt-1 rounded-full text-xs text-white bg-eerie-black text-center">{{ item.quantity }}</span>
                     </li>
                 </ul>
                 <div class="flex justify-between p-2 pb-0">
                     <span class="font-medium">Total</span>
-                    <span class="font-medium">$ {{ total }}</span>
+                    <span class="font-medium">$ {{ store.cartTotal }}</span>
                 </div>
             </div>
         </section>
@@ -205,16 +206,17 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { vMaska } from 'maska'
 import CreditCard from '../components/CreditCard.vue'
 import VisaIcon from '../components/icons/IconVisa.vue'
 import MasterIcon from '../components/icons/IconMastercard.vue'
 import PaypalIcon from '../components/icons/IconPaypal.vue'
-import { useCartStore } from '../stores/cart'
 import ArrowLeft from '~icons/mingcute/left-line'
+import { useCartStore } from '../stores/cart'
 
 const store = useCartStore()
+const emit = defineEmits(['showReceipt'])
 
 let paymentMethod = ref(null)
 let shippingAddress = ref(null)
@@ -239,6 +241,11 @@ let errorMessage = ref('')
 let paymentMessage = ref('')
 let shippingMessage = ref('')
 
+const sendOrder = () => {
+    store.sendOrder()
+    emit('showReceipt')
+}
+
 const validateForm = () => {
     errorMessage.value = ''
     paymentMessage.value = ''
@@ -252,7 +259,7 @@ const validateForm = () => {
     } else if (shippingAddress.value === 'other'){
         validateShipping()
     } else{
-        store.sendOrder();
+        sendOrder()
     }
 }
     
@@ -262,7 +269,7 @@ const validatePayment = () => {
     } else if (!isValidExpiryDate(paymentInfo.value.expiryDate)){
         errorMessage.value = "Ingresa una fecha de vencimiento válida"
     } else{
-        store.sendOrder()
+        sendOrder()
     }
 }
 
@@ -270,7 +277,7 @@ const validateShipping = () => {
     if (!shippingInfo.value.firstName || !shippingInfo.value.lastName || !shippingInfo.value.address1 || !shippingInfo.value.zipCode || !shippingInfo.value.city || !shippingInfo.value.country){
         shippingMessage.value = "Los campos son obligatorios"    
     } else{
-        store.sendOrder()
+        sendOrder()
     }
 }
 
@@ -285,13 +292,6 @@ const isValidExpiryDate = (date) => {
     }
     return true
 }
-
-const total = computed(()=>{
-    return store.cart.reduce((acc, item) =>{
-        return acc + (item.product.price * item.quantity)
-    },0).toFixed(2)
-})
-
 </script>
 
 <style scoped>

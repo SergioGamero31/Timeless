@@ -4,7 +4,7 @@
         :src="mainProduct ? item.product.img[0] : item.product.image" :alt="item.product.title">
         <div class="flex flex-col flex-grow gap-1" :class="{'sm:truncate' : item.product.title.length > 50}">
             <span class="font-medium lg:whitespace-normal" :class="{'sm:truncate' : item.product.title.length > 50}">{{ item.product.title }}</span>
-            <span>$ {{ subtotal }}</span>
+            <span>$ {{ store.calculateSubtotal(item) }}</span>
         </div>
         <div class="flex gap-0.5 flex-shrink-0">
             <button @click="reduceQuantity(item)" class="bg-eerie-black text-white px-2 py-0.5 rounded-l-2xl active:scale-90">-</button>
@@ -30,7 +30,4 @@ const reduceQuantity = (item) => {
     if(item.quantity > 0) item.quantity --
     if(item.quantity == 0) store.removeFromCart(item)
 }
-const subtotal = computed(()=>{
-   return (props.item.quantity * props.item.product.price).toFixed(2)
-})
 </script>
