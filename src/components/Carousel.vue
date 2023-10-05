@@ -13,24 +13,27 @@
 <script setup>
 import { Splide, SplideSlide } from '@splidejs/vue-splide'
 import '@splidejs/vue-splide/css'
+import slide1 from '../assets/img/slide1.webp'
+import slide2 from '../assets/img/slide2.webp'
+import slide3 from '../assets/img/slide3.webp'
 
 const slides = [
     {
         quote: 'moda atemporal para expresar tu esencia',
         component: 'h1',
-        img: 'src/assets/img/slide1.webp',
+        img: slide1,
         position: 'object-top'
     },
     {
         quote: 'detalles que transforman tu estilo',
         component: 'span',
-        img: 'src/assets/img/slide2.webp',
+        img: slide2,
         position: 'object-center'
     },
     {
         quote: 'Refleja tu fuerza y estilo',
         component: 'span',
-        img: 'src/assets/img/slide3.webp',
+        img: slide3,
         position: 'object-center'
     }
 ]
