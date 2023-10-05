@@ -1,14 +1,8 @@
 # Timeless
 
-This template should help get you started developing with Vue 3 in Vite.
+![Captura de pantalla 2023-10-05 021927](https://github.com/SergioGamero31/Timeless/assets/64720452/835316db-be42-47d5-b518-01098de20a23)
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Timeless es una tienda en línea que ofrece una selección de prendas de alta calidad con un enfoque en la elegancia atemporal. Nuestra misión es brindarte moda que perdure en el tiempo y te haga sentir elegante en cualquier ocasión.
 
 ## Project Setup
 
@@ -33,3 +27,11 @@ npm run build
 ```sh
 npm run lint
 ```
+## Build with
++ [Vue](https://vuejs.org/)
++ [Tailwind CSS](https://tailwindcss.com/)
++ [Lottie](https://lottiefiles.com/)
++ [Fake Store API](https://fakestoreapi.com/)
+
+## Demo
+[Demo](https://timeless-navy.vercel.app/)
